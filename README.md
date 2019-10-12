@@ -1,22 +1,36 @@
 # ember-concurrency-wrap-in-task
 
-[Short description of the addon.]
+Ember helper for wrapping a function in an [`ember-concurrency`](https://github.com/machty/ember-concurrency) task.
+
+## Usage
+
+This addon is to help migrate from using an async Ember Action to Ember Concurrency tasks.
+
+Rather than having to re-write your JS code to take advantage of the derived state that Ember Concurrency provides, you can pass an action through this helper to receive a task that wraps it.
+
+```handlebars
+{{#let (wrap-in-task (action this.someAction)) as |task|}}
+  <button {{action (perform task)}} disabled={{task.isRunning}}>
+    {{if task.isRunning 'Running...' 'Run'}}
+  </button>
+{{/let}}
+```
+
+### Limitations
+
+At this time, no task modifiers (`.drop`, `.keepLatest`, etc.) are applied to the task instance that is created.
+
+## Installation
+
+```bash
+yarn add ember-concurrency ember-concurrency-wrap-in-task
+```
 
 ## Compatibility
 
 - Ember.js v3.4 or above
 - Ember CLI v2.13 or above
 - Node.js v8 or above
-
-## Installation
-
-```
-ember install ember-concurrency-wrap-in-task
-```
-
-## Usage
-
-[Longer description of how to use the addon in apps.]
 
 ## Contributing
 
