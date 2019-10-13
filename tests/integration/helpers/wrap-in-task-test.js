@@ -110,4 +110,29 @@ module("Integration | Helper | wrap-in-task", function(hooks) {
       .dom("#result")
       .hasText("foobar", "It results in the resolution of the promise");
   });
+
+  test("applying a task modifier", async function(assert) {
+    const { resolve, promise } = defer();
+    td.when(this.action()).thenReturn(promise);
+
+    await render(hbs`
+      {{#let (wrap-in-task this.action type='drop') as |task|}}
+        <button {{action (perform task)}}>
+          {{if task.isRunning 'Running...' 'Click Me'}}
+        </button>
+      {{/let}}
+    `);
+
+    await click("button");
+    await click("button");
+
+    resolve();
+    await settled();
+
+    assert.verify(
+      this.action(),
+      { times: 1 },
+      "Action was only invoked one time"
+    );
+  });
 });

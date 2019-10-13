@@ -16,9 +16,11 @@ Rather than having to re-write your JS code to take advantage of the derived sta
 {{/let}}
 ```
 
-### Limitations
+A "task type" (`drop`, `keepLatest`) can be provided as a named parameter to the helper:
 
-At this time, no task modifiers (`.drop`, `.keepLatest`, etc.) are applied to the task instance that is created.
+```handlebars
+{{wrap-in-task (action this.someAction) type="drop"}}
+```
 
 ## Installation
 
