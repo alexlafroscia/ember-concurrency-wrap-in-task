@@ -8,9 +8,11 @@ import td from "testdouble";
 module("Integration | Helper | wrap-in-task", function(hooks) {
   setupRenderingTest(hooks);
 
-  test("passing arguments to the action", async function(assert) {
+  hooks.beforeEach(function() {
     this.action = td.function();
+  });
 
+  test("passing arguments to the action", async function(assert) {
     await render(hbs`
       {{#let (wrap-in-task this.action) as |task|}}
         <button {{action (perform task) 'foobar'}}>
@@ -54,7 +56,6 @@ module("Integration | Helper | wrap-in-task", function(hooks) {
   });
 
   test("passing along the result of the action", async function(assert) {
-    this.action = td.function();
     td.when(this.action()).thenReturn("foobar");
 
     await render(hbs`
@@ -77,7 +78,6 @@ module("Integration | Helper | wrap-in-task", function(hooks) {
 
   test("the task runs while action's result is unresolved", async function(assert) {
     const { resolve, promise } = defer();
-    this.action = td.function();
     td.when(this.action()).thenReturn(promise);
 
     await render(hbs`
