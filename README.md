@@ -16,10 +16,10 @@ Rather than having to re-write your JS code to take advantage of the derived sta
 {{/let}}
 ```
 
-A "task type" (`drop`, `keepLatest`) can be provided as a named parameter to the helper:
+A "task type" (`drop`, `keepLatest`) can be provided as a named parameter to the helper. `maxConcurrency` can also be configured in a similar way.
 
 ```handlebars
-{{wrap-in-task (action this.someAction) type="drop"}}
+{{wrap-in-task (action this.someAction) type="drop" maxConcurrency=3}}
 ```
 
 ## Installation
