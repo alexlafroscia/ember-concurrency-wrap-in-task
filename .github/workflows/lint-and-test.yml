@@ -3,20 +3,21 @@ name: Lint and Test
 on: [push]
 
 jobs:
-  build:
-
+  lint:
     runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: yarn install
+    - run: yarn lint:js
 
+  test:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         ember-try-scenario: [ember-default, ember-lts-3.4, ember-lts-3.8, ember-release, ember-beta, ember-canary]
-
     steps:
     - uses: actions/checkout@v1
-    - name: Install, Lint and Test
-      run: |
-        yarn install
-        yarn lint:js
-        yarn ember try:one ${{ matrix.ember-try-scenario }}
+    - run: yarn install
+    - run: yarn ember try:one ${{ matrix.ember-try-scenario }}
       env:
         CI: true
