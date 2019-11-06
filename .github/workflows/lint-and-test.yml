@@ -3,21 +3,51 @@ name: Lint and Test
 on: [push]
 
 jobs:
-  lint:
+  install:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: yarn install
-    - run: yarn lint:js -f tap
+    - name: Cache Dependencies
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Install Dependencies
+      run: yarn install
+
+  lint:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Cache Dependencies
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Run ESLint
+      run: yarn lint:js -f tap
 
   test:
+    needs: install
     runs-on: ubuntu-latest
     strategy:
       matrix:
         ember-try-scenario: [ember-default, ember-lts-3.4, ember-lts-3.8, ember-release, ember-beta, ember-canary]
     steps:
     - uses: actions/checkout@v1
-    - run: yarn install
-    - run: yarn ember try:one ${{ matrix.ember-try-scenario }}
+    - name: Cache Dependencies
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Run Tests
+      run: yarn ember try:one ${{ matrix.ember-try-scenario }}
       env:
         CI: true
