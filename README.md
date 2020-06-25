@@ -9,9 +9,9 @@ This addon is to help migrate from using an async Ember Action to Ember Concurre
 Rather than having to re-write your JS code to take advantage of the derived state that Ember Concurrency provides, you can pass an action through this helper to receive a task that wraps it.
 
 ```handlebars
-{{#let (wrap-in-task (action this.someAction)) as |task|}}
-  <button {{action (perform task)}} disabled={{task.isRunning}}>
-    {{if task.isRunning 'Running...' 'Run'}}
+{{#let (wrap-in-task @someArgumentFunction) as |task|}}
+  <button {{on "click" (perform task)}} disabled={{task.isRunning}}>
+    {{if task.isRunning "Running..." "Run"}}
   </button>
 {{/let}}
 ```
@@ -19,7 +19,7 @@ Rather than having to re-write your JS code to take advantage of the derived sta
 A "task type" (`drop`, `keepLatest`) can be provided as a named parameter to the helper. `maxConcurrency` can also be configured in a similar way.
 
 ```handlebars
-{{wrap-in-task (action this.someAction) type="drop" maxConcurrency=3}}
+{{wrap-in-task @someArgumentFunction type="drop" maxConcurrency=3}}
 ```
 
 ## Installation
