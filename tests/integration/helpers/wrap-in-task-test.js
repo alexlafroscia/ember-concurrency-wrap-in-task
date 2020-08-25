@@ -5,14 +5,14 @@ import { defer } from "rsvp";
 import hbs from "htmlbars-inline-precompile";
 import td from "testdouble";
 
-module("Integration | Helper | wrap-in-task", function(hooks) {
+module("Integration | Helper | wrap-in-task", function (hooks) {
   setupRenderingTest(hooks);
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.action = td.function();
   });
 
-  test("passing arguments to the action", async function(assert) {
+  test("passing arguments to the action", async function (assert) {
     await render(hbs`
       {{#let (wrap-in-task this.action) as |task|}}
         <button {{action (perform task) 'foobar'}}>
@@ -29,7 +29,7 @@ module("Integration | Helper | wrap-in-task", function(hooks) {
     );
   });
 
-  test("changing the action passed into the function", async function(assert) {
+  test("changing the action passed into the function", async function (assert) {
     const first = td.function();
     const second = td.function();
     this.action = first;
@@ -55,7 +55,7 @@ module("Integration | Helper | wrap-in-task", function(hooks) {
     assert.verify(second(), "The second action is called");
   });
 
-  test("passing along the result of the action", async function(assert) {
+  test("passing along the result of the action", async function (assert) {
     td.when(this.action()).thenReturn("foobar");
 
     await render(hbs`
@@ -76,7 +76,7 @@ module("Integration | Helper | wrap-in-task", function(hooks) {
       .hasText("foobar", "The task resulted in the return value of the action");
   });
 
-  test("the task runs while action's result is unresolved", async function(assert) {
+  test("the task runs while action's result is unresolved", async function (assert) {
     const { resolve, promise } = defer();
     td.when(this.action()).thenReturn(promise);
 
@@ -111,7 +111,7 @@ module("Integration | Helper | wrap-in-task", function(hooks) {
       .hasText("foobar", "It results in the resolution of the promise");
   });
 
-  test("configuring the task", async function(assert) {
+  test("configuring the task", async function (assert) {
     const { resolve, promise } = defer();
     td.when(this.action()).thenReturn(promise);
 

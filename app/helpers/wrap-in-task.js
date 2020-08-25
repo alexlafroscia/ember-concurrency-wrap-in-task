@@ -1,4 +1,4 @@
 export {
   default,
-  wrapInTask
+  wrapInTask,
 } from "ember-concurrency-wrap-in-task/helpers/wrap-in-task";

@@ -27,11 +27,11 @@ export default Helper.extend({
     defineProperty(
       this,
       "task",
-      getTask(type, maxConcurrency, function*(...args) {
+      getTask(type, maxConcurrency, function* (...args) {
         return yield this.action(...args);
       })
     );
 
     return this.task;
-  }
+  },
 });
