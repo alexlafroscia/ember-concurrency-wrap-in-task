@@ -20,18 +20,18 @@ function getTask(type, maxConcurrency, fn) {
   return taskProp;
 }
 
-export default Helper.extend({
+export default class WrapInTaskHelper extends Helper {
   compute([action], { maxConcurrency, type }) {
     this.action = action;
 
     defineProperty(
       this,
       "task",
-      getTask(type, maxConcurrency, function* (...args) {
+      getTask(type, maxConcurrency, function*(...args) {
         return yield this.action(...args);
       })
     );
 
     return this.task;
-  },
-});
+  }
+}
