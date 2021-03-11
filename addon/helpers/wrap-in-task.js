@@ -20,7 +20,7 @@ function getTask(type, maxConcurrency, fn) {
   return taskProp;
 }
 
-export default Helper.extend({
+export default class WrapInTaskHelper extends Helper {
   compute([action], { maxConcurrency, type }) {
     this.action = action;
 
@@ -33,5 +33,5 @@ export default Helper.extend({
     );
 
     return this.task;
-  },
-});
+  }
+}
