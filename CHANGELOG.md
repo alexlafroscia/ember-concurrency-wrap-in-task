@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/alexlafroscia/ember-concurrency-wrap-in-task/compare/v2.0.0...v2.0.1) (2021-04-02)
+
+
+### Bug Fixes
+
+* widen range of valid `ember-concurrency` peer versions ([bef9605](https://github.com/alexlafroscia/ember-concurrency-wrap-in-task/commit/bef96054b5b19434382bcf4f9ecbb1c5bd90a65a))
+
 ## [2.0.0](https://github.com/alexlafroscia/ember-concurrency-wrap-in-task/compare/v1.1.0...v2.0.0) (2021-04-02)
 
 
