@@ -6083,7 +6083,7 @@ ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.6.0:
     ember-cli-version-checker "^2.1.2"
     semver "^5.5.0"
 
-ember-cli-babel@^7.0.0, ember-cli-babel@^7.11.1, ember-cli-babel@^7.13.0, ember-cli-babel@^7.13.2, ember-cli-babel@^7.2.0, ember-cli-babel@^7.22.1, ember-cli-babel@^7.23.0, ember-cli-babel@^7.23.1, ember-cli-babel@^7.26.6:
+ember-cli-babel@^7.0.0, ember-cli-babel@^7.11.1, ember-cli-babel@^7.13.0, ember-cli-babel@^7.13.2, ember-cli-babel@^7.22.1, ember-cli-babel@^7.23.0, ember-cli-babel@^7.23.1, ember-cli-babel@^7.26.6:
   version "7.26.6"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-7.26.6.tgz#322fbbd3baad9dd99e3276ff05bc6faef5e54b39"
   integrity sha512-040svtfj2RC35j/WMwdWJFusZaXmNoytLAMyBDGLMSlRvznudTxZjGlPV6UupmtTBApy58cEF8Fq4a+COWoEmQ==
@@ -6212,15 +6212,6 @@ ember-cli-test-loader@^3.0.0:
   integrity sha512-wfFRBrfO9gaKScYcdQxTfklx9yp1lWK6zv1rZRpkas9z2SHyJojF7NOQRWQgSB3ypm7vfpiF8VsFFVVr7VBzAQ==
   dependencies:
     ember-cli-babel "^7.13.2"
-
-ember-cli-testdouble-qunit@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/ember-cli-testdouble-qunit/-/ember-cli-testdouble-qunit-2.1.1.tgz#29248eaf4d267fe493eaf449328e29a7fb27ab42"
-  integrity sha512-w2eFraIz25KtUe0gK5NzHByoW0maczBzoB40IEbV8qnHzOwRkf6kvR36MByXglBXUPGf9G2ZfTTKChK7KcOyeg==
-  dependencies:
-    broccoli-funnel "^2.0.1"
-    ember-cli-babel "^7.2.0"
-    testdouble-qunit "^2.1.1"
 
 ember-cli-testdouble@^0.1.4:
   version "0.1.4"
@@ -10740,6 +10731,14 @@ quibble@^0.5.6:
     lodash "^4.17.14"
     resolve "^1.11.1"
 
+quibble@^0.6.4:
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/quibble/-/quibble-0.6.5.tgz#455f606ab3396d04f2384a2ba7f6ce564c4158ed"
+  integrity sha512-L3/bDHWjHm9zdG0Aqj7lhmp6Q5RFjXeitO9CGzWKP83d6BlGS0lLo9oswxgq62gwuIF7apT9tO0dw9kNuvb9eg==
+  dependencies:
+    lodash "^4.17.14"
+    resolve "^1.11.1"
+
 quick-lru@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
@@ -12251,10 +12250,20 @@ terser@^4.1.2:
     source-map "~0.6.1"
     source-map-support "~0.5.12"
 
-testdouble-qunit@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/testdouble-qunit/-/testdouble-qunit-2.1.1.tgz#3f5e8ff7a6bdeb9d75941e88100efeef823089a2"
-  integrity sha512-1+2oA5oVogN9PwbshcnC4TneJhRgHSRi1pTPaDfDTM+w41yrLJzH95GK249BvELPs3Tmd9JQ6xkr8fs5DKsmow==
+testdouble-qunit@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/testdouble-qunit/-/testdouble-qunit-3.0.0.tgz#142e7fe32cbd3d3f442cd8539f236dea63db2fa8"
+  integrity sha512-zd2IKz5eELq4bZPDG0HYE6JTALGibUvrOy9OD05JiiE+4/UEFBDDG7P0tWjJfP5rk2Vm+gK9Do02a/xtvWe+jA==
+
+testdouble@^3.16.2:
+  version "3.16.2"
+  resolved "https://registry.yarnpkg.com/testdouble/-/testdouble-3.16.2.tgz#7ce45d46423fe6cd07926e2371b96ad9e09c1a5b"
+  integrity sha512-oPVoKBXrkP/SaTsF2W7Tpe77whd/jRKbeAVZok1lQKkZ2lFjjFrulpxuHOVF84tMr8PrN8GUUr24Nto/9vs1Lw==
+  dependencies:
+    lodash "^4.17.15"
+    quibble "^0.6.4"
+    stringify-object-es5 "^2.5.0"
+    theredoc "^1.0.0"
 
 testdouble@^3.5.2:
   version "3.12.4"
